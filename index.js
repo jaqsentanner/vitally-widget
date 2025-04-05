@@ -57,12 +57,21 @@ const byeByeUser = (inputFile, userName) => {
     fetch(inputFile)
         .then(response => response.json())
         .then(data => {
+            // Check if the user exists in the session data
+            const userExists = data.some(session => session.user.name === userName);
+            if (!userExists) {
+                alert("No user with this name in sessions!");
+                document.getElementById("download-delete").style.display = "none"; // Hide the download link
+                return;  // Stop the function if the user does not exist
+            }
+
+            // Proceed to delete the user's sessions if they exist
             const filteredSessions = data.filter(session => session.user.name !== userName);
             const outputData = JSON.stringify(filteredSessions, null, 2);
             const blob = new Blob([outputData], { type: "text/plain" });
             const link = document.getElementById("download-delete");
             link.href = URL.createObjectURL(blob);
-            link.style.display = "block";
+            link.style.display = "block"; // Show the download link once the deletion is successful
         })
         .catch(error => console.error("Error fetching file:", error));
 };
@@ -79,7 +88,7 @@ document.getElementById("generate-report-btn").addEventListener("click", functio
             const outputFile = new Blob([JSON.stringify(result, null, 2)], { type: 'text/plain' });
             const link = document.getElementById("download-report");
             link.href = URL.createObjectURL(outputFile);
-            link.style.display = 'block';
+            link.style.display = 'block'; // Show the download link once the report is ready
         })
         .catch(err => console.error('Error fetching file:', err));
 });
@@ -89,14 +98,9 @@ document.getElementById("delete-user-btn").addEventListener("click", function() 
     const userName = document.getElementById("user-name").value;
 
     if (userName) {
-        // Check which function to call (byeByeMonica or byeByeUser)
-        if (userName === "Monica Hall") {
-            byeByeMonica('./user-sessions.txt', './tr-data-delete.txt');  // Standard file output
-        } else {
-            byeByeUser('./user-sessions.txt', userName);  // Dynamic deletion and browser download
-        }
-
-        const link = document.getElementById("download-delete");
-        link.style.display = 'block';
+        // Hide the download link before making any changes
+        document.getElementById("download-delete").style.display = "none";
+        
+        byeByeUser('./user-sessions.txt', userName);  // Dynamic deletion and browser download
     }
 });
