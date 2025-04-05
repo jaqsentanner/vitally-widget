@@ -1,5 +1,5 @@
 // Secret Phrase Simulation
-const secretPhrase = "bradiscool!"; // Set your secret phrase here
+const secretPhrase = "vitallysecret"; // Set your secret phrase here
 
 document.getElementById("submit-secret").addEventListener("click", function() {
     const enteredPhrase = document.getElementById("secret-phrase").value;
@@ -14,9 +14,61 @@ document.getElementById("submit-secret").addEventListener("click", function() {
     }
 });
 
-// The rest of your code for generating the report and deleting user sessions stays the same
+// Functions for generating the report and deleting user sessions
+const userLoginsByMonth = (loginSessions) => {
+    const loginsPerMonth = {}; 
+
+    loginSessions.forEach(session => {
+        const userId = session.user.id;
+        const username = session.user.name;
+        const sessionDate = new Date(session.date); 
+        const monthYear = `${sessionDate.getFullYear()}-${sessionDate.getMonth() + 1}`;
+
+        if (!loginsPerMonth[userId]) {
+            loginsPerMonth[userId] = {
+                username: username,
+                userId: userId,
+                year: sessionDate.getFullYear(),
+                logins: {}
+            };
+        }
+
+        if (!loginsPerMonth[userId].logins[monthYear]) {
+            loginsPerMonth[userId].logins[monthYear] = 0;
+        }
+
+        loginsPerMonth[userId].logins[monthYear]++;
+    });
+
+    const result = Object.keys(loginsPerMonth).map(userId => {
+        const user = loginsPerMonth[userId];
+        return Object.keys(user.logins).map(monthYear => ({
+            userId: userId,
+            userName: user.username,
+            month: monthYear,
+            logins: user.logins[monthYear]
+        }));
+    }).flat();
+
+    return result;
+};
+
+const byeByeUser = (inputFile, userName) => {
+    fetch(inputFile)
+        .then(response => response.json())
+        .then(data => {
+            const filteredSessions = data.filter(session => session.user.name !== userName);
+            const outputData = JSON.stringify(filteredSessions, null, 2);
+            const blob = new Blob([outputData], { type: "text/plain" });
+            const link = document.getElementById("download-delete");
+            link.href = URL.createObjectURL(blob);
+            link.style.display = "block";
+        })
+        .catch(error => console.error("Error fetching file:", error));
+};
+
+// Generate Report Button
 document.getElementById("generate-report-btn").addEventListener("click", function() {
-    // Fetch sessions and generate report
     fetch('./user-sessions.txt')
         .then(response => response.text())
         .then(data => {
@@ -32,6 +84,7 @@ document.getElementById("generate-report-btn").addEventListener("click", functio
         .catch(err => console.error('Error fetching file:', err));
 });
 
+// Delete User Sessions Button
 document.getElementById("delete-user-btn").addEventListener("click", function() {
     const userName = document.getElementById("user-name").value;
 
@@ -43,7 +96,6 @@ document.getElementById("delete-user-btn").addEventListener("click", function() 
             byeByeUser('./user-sessions.txt', userName);  // Dynamic deletion and browser download
         }
 
-        // Optionally, trigger a file download (for byeByeMonica, it will be done as usual)
         const link = document.getElementById("download-delete");
         link.style.display = 'block';
     }
