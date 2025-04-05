@@ -1,5 +1,5 @@
 // Secret Phrase Simulation
-const secretPhrase = "vitallysecret"; // Set your secret phrase here
+const secretPhrase = "bradiscool!"; // Set your secret phrase here
 
 document.getElementById("submit-secret").addEventListener("click", function() {
     const enteredPhrase = document.getElementById("secret-phrase").value;
