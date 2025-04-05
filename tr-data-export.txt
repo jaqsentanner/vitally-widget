@@ -1,0 +1,98 @@
+[
+  {
+    "userId": "5a25b082-c753-403b-ab1d-c1a40a28bad1",
+    "username": "Monica Hall",
+    "month": "2024-1",
+    "logins": 11
+  },
+  {
+    "userId": "5a25b082-c753-403b-ab1d-c1a40a28bad1",
+    "username": "Monica Hall",
+    "month": "2024-2",
+    "logins": 20
+  },
+  {
+    "userId": "5a25b082-c753-403b-ab1d-c1a40a28bad1",
+    "username": "Monica Hall",
+    "month": "2024-3",
+    "logins": 6
+  },
+  {
+    "userId": "85059edc-18d9-4d28-9c0d-645c6944826c",
+    "username": "Jared Dunn",
+    "month": "2024-1",
+    "logins": 4
+  },
+  {
+    "userId": "85059edc-18d9-4d28-9c0d-645c6944826c",
+    "username": "Jared Dunn",
+    "month": "2024-3",
+    "logins": 3
+  },
+  {
+    "userId": "c6846f77-dca6-49e3-97a5-f96b06877243",
+    "username": "Richard Hendricks",
+    "month": "2024-1",
+    "logins": 7
+  },
+  {
+    "userId": "c6846f77-dca6-49e3-97a5-f96b06877243",
+    "username": "Richard Hendricks",
+    "month": "2024-3",
+    "logins": 15
+  },
+  {
+    "userId": "c6846f77-dca6-49e3-97a5-f96b06877243",
+    "username": "Richard Hendricks",
+    "month": "2024-4",
+    "logins": 10
+  },
+  {
+    "userId": "c6846f77-dca6-49e3-97a5-f96b06877243",
+    "username": "Richard Hendricks",
+    "month": "2024-5",
+    "logins": 9
+  },
+  {
+    "userId": "c933ce45-dab9-4c2c-9b85-c899ef18cacc",
+    "username": "Dinesh Chugtai",
+    "month": "2024-1",
+    "logins": 1
+  },
+  {
+    "userId": "c933ce45-dab9-4c2c-9b85-c899ef18cacc",
+    "username": "Dinesh Chugtai",
+    "month": "2024-2",
+    "logins": 3
+  },
+  {
+    "userId": "db9bec6c-3289-43c6-875f-6faacb3c4d56",
+    "username": "Nelson Bighetti",
+    "month": "2024-3",
+    "logins": 2
+  },
+  {
+    "userId": "db9bec6c-3289-43c6-875f-6faacb3c4d56",
+    "username": "Nelson Bighetti",
+    "month": "2024-4",
+    "logins": 5
+  },
+  {
+    "userId": "db9bec6c-3289-43c6-875f-6faacb3c4d56",
+    "username": "Nelson Bighetti",
+    "month": "2024-5",
+    "logins": 5
+  },
+  {
+    "userId": "ecb05559-b3c5-40b1-92e2-f060c1ea67a5",
+    "username": "Bertram Gilfoyle",
+    "month": "2024-3",
+    "logins": 2
+  },
+  {
+    "userId": "ecb05559-b3c5-40b1-92e2-f060c1ea67a5",
+    "username": "Bertram Gilfoyle",
+    "month": "2024-5",
+    "logins": 1
+  }
+]
